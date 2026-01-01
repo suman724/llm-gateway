@@ -35,18 +35,18 @@ This gateway is harderened for production usage:
 
 ```mermaid
 graph LR
-    Client --> ALB[Load Balancer]
-    ALB --> Gateway[LLM Gateway (ECS)]
+    Client --> ALB["Load Balancer"]
+    ALB --> Gateway["LLM Gateway (ECS)"]
     
     subgraph "Gateway Core"
-        Gateway --> Auth[Auth Middleware]
-        Gateway --> RL[Rate Limit (Redis)]
-        Gateway --> Proxy[Proxy Handler]
+        Gateway --> Auth["Auth Middleware"]
+        Gateway --> RL["Rate Limit (Redis)"]
+        Gateway --> Proxy["Proxy Handler"]
     end
     
-    Auth -.-> DDB[(DynamoDB Tenants)]
-    Proxy --> Upstream[LLM Providers]
-    Proxy -.-> Usage[(DynamoDB Usage)]
+    Auth -.-> DDB[("DynamoDB Tenants")]
+    Proxy --> Upstream["LLM Providers"]
+    Proxy -.-> Usage[("DynamoDB Usage")]
 ```
 
 ### Components
